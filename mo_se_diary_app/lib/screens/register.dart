@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_se_diary_app/services/database_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -8,6 +9,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final DatabaseService _databaseService = DatabaseService.instance;
   final _formKey = GlobalKey<FormState>();
 
   @override

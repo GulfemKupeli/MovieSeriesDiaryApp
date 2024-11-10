@@ -18,7 +18,6 @@ class _LoginScreenState extends State<LoginScreen> {
     'assets/images/heretic.jpg',
     'assets/images/thewildrobot.jpg',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -151,6 +150,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                         const SizedBox(height: 30),
+                        // Beni hatırla
+
                         // Giriş butonu
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
