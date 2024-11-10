@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:ui'; // ImageFilter için gerekli
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mo_se_diary_app/screens/login.dart';
-// Paketi import edin
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,35 +35,29 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.black, Colors.amber],
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/thebear.jpg'), // Arka plan resmi
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: BackdropFilter(
+          // Bulanıklık efekti
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Container(
+            color:
+                Colors.black.withOpacity(0.6), // Bulanıklık üzerine koyu renk
+            child: Center(
+              child: Image.asset(
+                'assets/images/logoW.png', // Logo resmi
+                width: 200, // Logonun genişliği
+                height: 200, // Logonun yüksekliği
+              ),
+            ),
+          ),
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            CupertinoIcons.videocam_fill, // Doğru simge adı (örnek)
-            size: 100,
-            color: Colors.white,
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            'WatchVerse',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              color: Colors.white,
-              fontSize: 32,
-            ),
-          )
-        ],
-      ),
-    ));
+    );
   }
 }

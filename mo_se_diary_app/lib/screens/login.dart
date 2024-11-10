@@ -29,45 +29,56 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Stack(
           children: [
             // Bulanık arka plan slider'ı
-            Padding(
-              padding:
-                  const EdgeInsets.only(top: 50.0), // Üstten 50 piksel boşluk
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  viewportFraction: 0.8,
-                  aspectRatio: 2.0,
-                ),
-                items: imageList.map((imagePath) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(imagePath),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: BackdropFilter(
-                          // Bulanıklık efekti
-                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: Container(
+            Positioned(
+                top: 50,
+                left: 0,
+                right: 0,
+                child: SizedBox(
+                  height: 300,
+
+                  //Padding(
+                  //padding:
+                  // const EdgeInsets.only(top: 50.0), // Üstten 50 piksel boşluk
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      enlargeCenterPage: false,
+                      viewportFraction: 0.8,
+                      aspectRatio: 2.0,
+                    ),
+                    items: imageList.map((imagePath) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.2),
+                              image: DecorationImage(
+                                image: AssetImage(imagePath),
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                        ),
+                            child: BackdropFilter(
+                              // Bulanıklık efekti
+                              filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.2),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       );
-                    },
-                  );
-                }).toList(),
-              ),
-            ),
+                    }).toList(),
+                  ),
+                )),
             // Giriş formu
-            Center(
+            Positioned(
+              top: 350,
+              left: 0,
+              right: 0,
+              bottom: 20,
               child: SingleChildScrollView(
                 // Klavyeyi engellememek için
                 child: Padding(
