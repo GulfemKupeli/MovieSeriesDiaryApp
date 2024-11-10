@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mo_se_diary_app/screens/home_screen.dart';
+import 'package:mo_se_diary_app/screens/login.dart';
 // Paketi import edin
 
 class SplashScreen extends StatefulWidget {
@@ -18,13 +18,14 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const HomeScreen(),
+        builder: (_) => const LoginScreen(),
       ));
     });
   }
 
+  @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
