@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mo_se_diary_app/Model/model.dart';
 
-const apiKey = "0b168b40d626ffdbd23540f26ceb63b0";
+const apiKey = "YOUR API KEY";
 
 class APIservices {
   final nowShowingApi =
